@@ -1,0 +1,19 @@
+.profile__avatar {
+  max-width: 120px;
+  min-height: 120px;
+  margin: 3.75px 26.25px 3.75px 0;
+  box-sizing: border-box;
+  border-radius: 50%; 
+}
+
+.profile__avatar:hover {
+  opacity: 0.6;
+  cursor: url(../../../images/Vector.png), pointer;
+}
+
+@media screen and (max-width: 568px) {
+  .profile__avatar {
+   margin: o auto;
+ }  
+}
+

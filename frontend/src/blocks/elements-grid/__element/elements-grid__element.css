@@ -1,0 +1,11 @@
+.elements-grid__element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 282px;
+    min-height: 361px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    position: relative;
+}

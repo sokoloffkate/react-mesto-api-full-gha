@@ -1,0 +1,17 @@
+.elements-grid__icon {
+  width: 35px;
+  height: 30px;
+  background-image: url(../../../images/icon.svg);
+  background-repeat: no-repeat;
+  background-size: 22px 19px;
+  background-position: 5px 5px;
+  background-color:#FFFFFF;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.elements-grid__icon:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

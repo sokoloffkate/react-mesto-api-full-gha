@@ -1,0 +1,17 @@
+.elements-grid__trash {
+  background-image: url(../../../images/trash.svg);
+  background-repeat: no-repeat;
+  width: 23px;
+  height: 25px;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  border: none;
+}    
+
+.elements-grid__trash:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
