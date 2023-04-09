@@ -11,8 +11,7 @@ import ImagePopup from "./ImagePopup";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login";
 import Main from "./Main";
-import { Switch } from "react-router-dom/cjs/react-router-dom.min";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router";
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
