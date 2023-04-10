@@ -45,3 +45,10 @@
 @import url(blocks/auth/__form/auth__form.css);
 @import url(blocks/auth/__field/auth__field.css);
 @import url(blocks/auth/__button/auth__button.css);
+@import url(blocks/header/__auth-link/header__auth-link);
+@import url(blocks/header/__auth-button/header__auth-button.css);
+@import url(blocks/header/__auth-email/header__auth-email.css);
+@import url(blocks/header/__auth-main/header__auth-main.css);
+@import url(blocks/popup/__info/popup__info.css);
+@import url(blocks/popup/__info-log/popup__info-logo.css);
+@import url(blocks/popup/__info-title/popup__info-title.css);

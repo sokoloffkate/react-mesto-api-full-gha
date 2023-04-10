@@ -1,0 +1,10 @@
+.header__auth-main {
+   display: flex; 
+   flex-direction: row;
+   justify-content: space-between;
+   align-self: flex-start;
+   max-width: 210px;
+   width: 100%;
+   gap: 24px;
+   padding-top: 6px;
+}

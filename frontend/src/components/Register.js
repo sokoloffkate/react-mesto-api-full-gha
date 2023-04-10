@@ -1,11 +1,32 @@
 import React, { useState, useCallback } from "react";
 import { Redirect } from "react-router-dom";
 
-function Login({ isLoggedIn, onLogin }) {
+function Register({ isLoggedIn, onRegister }) {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
+
+  /*const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };*/
+
+  /*const handleChangeData = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value
+    });
+    console.log(e.target)
+    console.dir(data)
+  };*/
 
   const handleChangeData = useCallback(
     (e) => {
@@ -21,18 +42,18 @@ function Login({ isLoggedIn, onLogin }) {
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      onLogin(data.email, data.password);
+      onRegister(data.email, data.password);
     },
-    [onLogin, data]
+    [onRegister, data]
   );
 
-  if (isLoggedIn) {
-    return <Redirect to="/" />;
+  if(isLoggedIn) {
+    return <Redirect to="/"/>
   }
 
   return (
     <div className="auth">
-      <h2 className="auth__title">Вход</h2>
+      <h2 className="auth__title">Регистрация</h2>
       <form
         action="submit"
         className="auth__form"
@@ -40,7 +61,7 @@ function Login({ isLoggedIn, onLogin }) {
         onSubmit={handleSubmit}
       >
         <input
-          type="email"
+          type="text"
           value={data.email}
           onChange={handleChangeData}
           className="auth__field"
@@ -62,11 +83,11 @@ function Login({ isLoggedIn, onLogin }) {
         />
 
         <button type="submit" className="auth__button">
-          Войти
+          Зарегистрироваться
         </button>
       </form>
     </div>
   );
 }
 
-export default Login;
+export default Register;
