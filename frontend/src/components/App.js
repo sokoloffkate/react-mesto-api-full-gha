@@ -1,5 +1,5 @@
 import { CurrentUserContext } from "contexts/CurrentUserContext";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { api } from "utils/Api";
 import { AddPlacePopup } from "./AddPlacePopup";
 import { DeleteCardPopup } from "./DeleteCardPopup";
@@ -22,12 +22,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  const tokenCheck = useCallback(() => {
-    
-  }, [])
-
+   
   useEffect(() => {
     api
       .getUserProfile()
@@ -99,9 +94,9 @@ function App() {
     setSelectedCard({ isOpen: true, card: card });
   };
 
-  const handleUpdateUser = ({ name: name, job: job }) => {
+  const handleUpdateUser = ({ name, job }) => {
     api
-      .updateUserProfile({ name: name, job: job })
+      .updateUserProfile({ name, job })
       .then((newDataUser) => {
         setCurrentUser({
           ...newDataUser,
@@ -123,9 +118,9 @@ function App() {
       .catch((err) => console.log(`Ошибка - ${err}`));
   };
 
-  const handleAddPlaceSubmit = ({ name: name, link: link }) => {
+  const handleAddPlaceSubmit = ({ name, link }) => {
     api
-      .addNewCard({ name: name, link: link })
+      .addNewCard({ name, link })
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
@@ -155,17 +150,7 @@ function App() {
             component={Main}
           />
 
-          {/*<Main
-          onEditAvatar={handleEditAvatarClick}
-          onEditProfile={handleEditProfileClick}
-          onAddPlace={handleAddPlaceClick}
-          cards={cards}
-          onDeleteCard={handleDeleteClick}
-          onCardClick={handleCardClick}
-          onCardLike={handleCardLike}
-  />*/}
-
-          <Footer />
+         <Footer />
 
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
@@ -184,17 +169,6 @@ function App() {
             onClose={closeAllPopups}
             onAddNewPlace={handleAddPlaceSubmit}
           ></AddPlacePopup>
-
-          {/*<PopupWithForm
-          name="popup_confirm_delete"
-          title="Вы уверены?"
-          btnName="Да"
-          isOpen={isDeletePopupOpen}
-          onClose={closeAllPopups}
-          onSubmit={handleCardDelete}
-        >
-          <></>
-        </PopupWithForm>*/}
 
           <DeleteCardPopup
             isOpen={deleteCard.isOpen}
