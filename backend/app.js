@@ -8,7 +8,7 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/ErrorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require("./middlewares/cors");
+const cors = require('./middlewares/cors');
 
 const { RegUrl } = require('./utils/constants');
 const NotFound = require('./errors/NotFound');
