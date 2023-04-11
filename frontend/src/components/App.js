@@ -14,9 +14,9 @@ import ProtectedRoute from "./ProtectedRoute";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
-import * as auth from "utils/auth";
-import Success from "images/Success.svg";
-import Failure from "images/Failure.svg";
+import * as auth from "../utils/Auth";
+import Success from '../images/Success.svg';
+import Failure from "../images/Failure.svg";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -128,6 +128,7 @@ function App() {
   const handleCardDelete = (card) => {
     api
       .deleteCard(card._id)
+      // @ts-ignore
       .then((y) => {
         setCards((cards) => cards.filter((c) => c._id !== card._id));
         closeAllPopups();
@@ -173,7 +174,7 @@ function App() {
     setSelectedCard({ isOpen: true, card: card });
   };
 
-  const handleUpdateUser = ({ name: name, job: job }) => {
+  const handleUpdateUser = ({ name, job }) => {
     api
       .updateUserProfile({ name: name, job: job })
       .then((newDataUser) => {
@@ -197,7 +198,7 @@ function App() {
       .catch((err) => console.log(`Ошибка - ${err}`));
   };
 
-  const handleAddPlaceSubmit = ({ name: name, link: link }) => {
+  const handleAddPlaceSubmit = ({ name, link }) => {
     api
       .addNewCard({ name: name, link: link })
       .then((newCard) => {
