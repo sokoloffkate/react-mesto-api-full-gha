@@ -1,17 +1,14 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-require('dotenv').config();
-
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
-const {
-  createUser, login,
-} = require('./controllers/users');
+const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/ErrorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const cors = require("./middlewares/cors");
 
 const { RegUrl } = require('./utils/constants');
 const NotFound = require('./errors/NotFound');
@@ -23,8 +20,9 @@ const app = express();
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 });
-app.use(express.json());
 
+app.use(cors);
+app.use(express.json());
 app.use(requestLogger);
 
 app.post('/signin', celebrate({
