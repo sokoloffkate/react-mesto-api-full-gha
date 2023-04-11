@@ -3,7 +3,7 @@
       "baseUrl": "./src",
       "checkJs": true,
       "jsx": "react",
-      "lib": ["ES2015"]
+      "lib": ["ES2015", "DOM"]
     }
   }
   
