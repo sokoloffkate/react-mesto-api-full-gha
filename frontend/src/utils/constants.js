@@ -84,7 +84,7 @@ export const stateCreateBtnConfig = {
 };
 
 export const settingConfig = {
-  url: "http://api.mesto.sokolova.nomoredomains.monster",
+  url: "https://api.mesto.sokolova.nomoredomains.monster",
   headers: {
       "Content-Type": "application/json",
   },
