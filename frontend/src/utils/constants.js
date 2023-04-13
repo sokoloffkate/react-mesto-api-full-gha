@@ -27,7 +27,6 @@ export const initialCards = [
 
 export const validatorForms = {};
 
-//export const cardGrid = document.querySelector('.elements-grid');
 export const popUpAddBut = document.querySelector(".profile__add-button");
 export const popUpEditBut = document.querySelector(".profile__edit-button");
 export const popUpAvatarBut = document.querySelector(".profile__avatar");
@@ -84,15 +83,9 @@ export const stateCreateBtnConfig = {
   activeState: "Создание...",
 };
 
-/*export const stateDeleteBtnConfig = {
-    normalState: 'Да',
-    activeState: 'Удаление...',
-  }*/
-
 export const settingConfig = {
-  url: "https://mesto.nomoreparties.co/v1/cohort-50",
+  url: "http://api.mesto.sokolova.nomoredomains.monster",
   headers: {
-    authorization: "da117c90-7803-4f92-83b6-3c76194ee3e0",
-    "Content-Type": "application/json",
+      "Content-Type": "application/json",
   },
 };
