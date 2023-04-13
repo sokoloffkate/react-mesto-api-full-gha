@@ -25,10 +25,11 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: this._headers,
+      credentials: 'include',
     }).then(this._checkResponse);
   }
 
-  addNewCard({ name: name, link: link }) {
+  addNewCard({ name, link }) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -36,6 +37,7 @@ class Api {
         name: name,
         link: link,
       }),
+      credentials: 'include',
     }).then(this._checkResponse);
   }
 
@@ -46,7 +48,7 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  updateUserProfile({ name: name, job: job }) {
+  updateUserProfile({ name, job }) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
