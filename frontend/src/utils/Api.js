@@ -18,7 +18,6 @@ class Api {
     return fetch(`${this._url}/cards`, {
       method: "GET",
       headers: this._headers,
-      credentials: 'include',
     }).then(this._checkResponse);
   }
 
@@ -26,7 +25,6 @@ class Api {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: this._headers,
-      credentials: 'include',
     }).then(this._checkResponse);
   }
 
@@ -38,7 +36,6 @@ class Api {
         name: name,
         link: link,
       }),
-      credentials: 'include',
     }).then(this._checkResponse);
   }
 
@@ -46,8 +43,7 @@ class Api {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-      credentials: 'include',
-    }).then(this._checkResponse);
+  }).then(this._checkResponse);
   }
 
   updateUserProfile({ name, job }) {
@@ -58,15 +54,13 @@ class Api {
         name: name,
         about: job,
       }),
-     credentials: 'include',
-    }).then(this._checkResponse);
+   }).then(this._checkResponse);
   }
 
   switchCardLikes(idCard, likeStatus) {
     return fetch(`${this._url}/cards/${idCard}/likes`, {
       method: likeStatus ? "DELETE" : "PUT",
       headers: this._headers,
-      credentials: 'include',
     }).then(this._checkResponse);
   }
 
@@ -77,7 +71,6 @@ class Api {
       body: JSON.stringify({
         avatar: data.avatar,
       }),
-      credentials: 'include',
     }).then(this._checkResponse);
   }
 }
