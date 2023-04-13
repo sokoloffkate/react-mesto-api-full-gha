@@ -1,4 +1,4 @@
-export const base_url = " https://auth.nomoreparties.co";
+export const base_url = "https://api.mesto.sokolova.nomoredomains.monster";
 
 export const login = (email, password) => {
   return fetch(`${base_url}/signin`, {
