@@ -1,15 +1,14 @@
 const express = require('express');
-//const cors = require('cors');
+const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
-
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/ErrorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
+// const cors = require('./middlewares/cors');
 
 const { RegUrl } = require('./utils/constants');
 const NotFound = require('./errors/NotFound');
@@ -27,7 +26,7 @@ const corsOptions = {
     'https://mesto.sokolova.nomoredomains.monster/',
     'http://mesto.sokolova.nomoredomains.monster/',
     'localhost:3000',
-    ]
+  ],
 };
 
 app.use(cors(corsOptions));
