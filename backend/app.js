@@ -1,4 +1,5 @@
 const express = require('express');
+// const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -22,6 +23,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 });
 
 app.use(cors);
+
 app.use(express.json());
 app.use(requestLogger);
 

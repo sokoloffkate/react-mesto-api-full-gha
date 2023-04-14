@@ -1,3 +1,5 @@
+require('cors');
+
 const allowedCors = [
   'https://mesto.sokolova.nomoredomains.monster',
   'http://mesto.sokolova.nomoredomains.monster',
@@ -5,7 +7,8 @@ const allowedCors = [
 ];
 
 module.exports = (req, res, next) => {
-  const { origin } = req.headers.referer;
+  const { origin } = req.headers;
+  console.log(req.headers);
 
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
