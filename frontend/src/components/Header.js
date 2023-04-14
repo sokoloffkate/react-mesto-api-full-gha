@@ -14,13 +14,13 @@ function Header({email,  onLogOut }) {
           <button onClick={onLogOut} className="header__auth-button">Выйти</button>
         </div>
       </Route>
-      <Route path="/sigh-in">
-        <Link to="/sigh-up" className="header__auth-link">
+      <Route path="/signin">
+        <Link to="/signup" className="header__auth-link">
           Регистрация
         </Link>
       </Route>
-      <Route path="/sigh-up">
-        <Link to="/sigh-in" className="header__auth-link">
+      <Route path="/signup">
+        <Link to="/signin" className="header__auth-link">
           Войти
         </Link>
       </Route>

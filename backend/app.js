@@ -36,7 +36,6 @@ app.use(cors({
     'http://mesto.sokolova.nomoredomains.monster',
     'localhost:3000',
   ],
-  'Access-Control-Allow-Credentials': true,
 }));
 
 app.use(express.json());

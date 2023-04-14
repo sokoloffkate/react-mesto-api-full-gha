@@ -71,7 +71,7 @@ function App() {
           handleInfoPopupClick();
           console.log(`Ошибка - ${err}`);
         })
-        .finally(() => history.push("/sigh-in"));
+        .finally(() => history.push("/signin"));
     },
     [history, handleInfoPopupClick]
   );
@@ -226,16 +226,16 @@ function App() {
             onCardClick={handleCardClick}
             onCardLike={handleCardLike}
           />
-          <Route path="/sigh-in">
+          <Route path="/signin">
             <Login isLoggedIn={loggedIn} onLogin={handleAuthenticate} />
           </Route>
 
-          <Route path="/sigh-up">
+          <Route path="/signup">
             <Register isLoggedIn={loggedIn} onRegister={handleRegister} />
           </Route>
 
           <Route>
-            {loggedIn} ? <Redirect to="/" /> : <Redirect to="/sigh-in" />
+            {loggedIn} ? <Redirect to="/" /> : <Redirect to="/signin" />
           </Route>
         </Switch>
         <Footer />
