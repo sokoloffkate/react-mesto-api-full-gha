@@ -59,13 +59,13 @@ function App() {
   );
 
   const handleRegister = useCallback(
-    ({ email, password }) => {
+    (data) => {
       auth
-        .register({ email, password })
+        .register(data)
         .then((data) => {
           setUserRegister(true);
           handleInfoPopupClick();
-          setUserEmail(data.data.email);
+          setUserEmail(data.email);
         })
         .catch((err) => {
           setUserRegister(false);

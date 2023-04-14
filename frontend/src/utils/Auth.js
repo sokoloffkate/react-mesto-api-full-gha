@@ -9,13 +9,13 @@ export const login = (email, password) => {
     body: JSON.stringify({ email, password }),
   }).then(checkResponse);
 };
-export const register = ({ email, password }) => {
+export const register = (data) => {
   return fetch(`${base_url}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify(data),
   }).then(checkResponse);
 };
 
