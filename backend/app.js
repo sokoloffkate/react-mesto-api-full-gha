@@ -1,5 +1,5 @@
 const express = require('express');
-// const cors = require('cors');
+//const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -22,7 +22,15 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-app.use(cors);
+const corsOptions = {
+  origin: [
+    'https://mesto.sokolova.nomoredomains.monster/',
+    'http://mesto.sokolova.nomoredomains.monster/',
+    'localhost:3000',
+    ]
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(requestLogger);

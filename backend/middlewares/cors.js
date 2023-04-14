@@ -1,18 +1,17 @@
-require('cors');
-
 const allowedCors = [
-  'https://mesto.sokolova.nomoredomains.monster',
-  'http://mesto.sokolova.nomoredomains.monster',
+  'https://mesto.sokolova.nomoredomains.monster/',
+  'http://mesto.sokolova.nomoredomains.monster/',
   'localhost:3000',
 ];
 
 module.exports = (req, res, next) => {
-  const { origin = ['https://mesto.sokolova.nomoredomains.monster', 'http://mesto.sokolova.nomoredomains.monster'] } = req.headers;
-  console.log(origin);
+  const { origin } = req.headers;
+   console.log(req.headers.accept);
 
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   }
+
   const { method } = req;
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   const requestHeaders = req.headers['access-control-request-headers'];
