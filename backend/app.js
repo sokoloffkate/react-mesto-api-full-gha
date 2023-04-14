@@ -21,16 +21,24 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-const corsOptions = {
+/* const corsOptions = {
   origin: [
     'https://mesto.sokolova.nomoredomains.monster',
     'http://mesto.sokolova.nomoredomains.monster',
     'localhost:3000',
   ],
   'Access-Control-Allow-Credentials': true,
-};
+}; */
 
-app.use(cors(corsOptions))
+app.use(cors({
+  origin: [
+    'https://mesto.sokolova.nomoredomains.monster',
+    'http://mesto.sokolova.nomoredomains.monster',
+    'localhost:3000',
+  ],
+  'Access-Control-Allow-Credentials': true,
+}));
+
 app.use(express.json());
 app.use(requestLogger);
 
