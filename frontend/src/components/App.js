@@ -21,6 +21,7 @@ import Failure from "../images/Failure.svg";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState("");
+  console.log(userEmail);
   const [userRegister, setUserRegister] = useState(false);
   const history = useHistory();
 
@@ -58,9 +59,9 @@ function App() {
   );
 
   const handleRegister = useCallback(
-    (email, password) => {
+    ({ email, password }) => {
       auth
-        .register(email, password)
+        .register({ email, password })
         .then((data) => {
           setUserRegister(true);
           handleInfoPopupClick();

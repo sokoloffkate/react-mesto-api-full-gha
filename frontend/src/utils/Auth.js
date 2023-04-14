@@ -9,7 +9,7 @@ export const login = (email, password) => {
     body: JSON.stringify({ email, password }),
   }).then(checkResponse);
 };
-export const register = (email, password) => {
+export const register = ({ email, password }) => {
   return fetch(`${base_url}/signup`, {
     method: "POST",
     headers: {
