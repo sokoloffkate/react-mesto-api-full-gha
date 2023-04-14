@@ -8,7 +8,7 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/ErrorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const cors = require('./middlewares/cors');
+//const cors = require('./middlewares/cors');
 
 const { RegUrl } = require('./utils/constants');
 const NotFound = require('./errors/NotFound');
@@ -23,8 +23,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 
 const corsOptions = {
   origin: [
-    'https://mesto.sokolova.nomoredomains.monster/',
-    'http://mesto.sokolova.nomoredomains.monster/',
+    'https://mesto.sokolova.nomoredomains.monster',
+    'http://mesto.sokolova.nomoredomains.monster',
     'localhost:3000',
   ],
 };
