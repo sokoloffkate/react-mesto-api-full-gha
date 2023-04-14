@@ -7,8 +7,8 @@ const allowedCors = [
 ];
 
 module.exports = (req, res, next) => {
-  const { origin } = req.headers;
-  console.log(req.headers);
+  const { origin = ['https://mesto.sokolova.nomoredomains.monster', 'http://mesto.sokolova.nomoredomains.monster'] } = req.headers;
+  console.log(origin);
 
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
