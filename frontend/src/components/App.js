@@ -84,7 +84,8 @@ function App() {
       auth
         .checkToken(jwt)
         .then((data) => {
-          setUserEmail(data.data.email);
+          console.log(data);
+          setUserEmail(data.email);
           setLoggedIn(true);
         })
         .catch((err) => console.log(`Ошибка - ${err}`));

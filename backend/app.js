@@ -34,7 +34,7 @@ app.use(cors({
   origin: [
     'https://mesto.sokolova.nomoredomains.monster',
     'http://mesto.sokolova.nomoredomains.monster',
-    'localhost:3000',
+    'http://localhost:3000',
   ],
 }));
 
