@@ -21,7 +21,6 @@ import Failure from "../images/Failure.svg";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState("");
-  console.log(userEmail);
   const [userRegister, setUserRegister] = useState(false);
   const history = useHistory();
 
@@ -43,11 +42,9 @@ function App() {
       auth
         .login(email, password)
         .then((data) => {
-          if (data.token) {
-            setLoggedIn(true);
-            setUserEmail(email);
-            localStorage.setItem("jwt", data.token);
-          }
+          setLoggedIn(true);
+          setUserEmail(email);
+          localStorage.setItem("jwt", data.token)
         })
         .catch((err) => {
           setUserRegister(false);
@@ -63,7 +60,6 @@ function App() {
       auth
         .register(email, password)
         .then((data) => {
-          console.log(data);
           setUserRegister(true);
           handleInfoPopupClick();
           setUserEmail(data.email);
@@ -79,13 +75,11 @@ function App() {
   );
 
   const handleTokenCheck = useCallback(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
+    const jwt = localStorage.getItem('jwt');
+     if (jwt) {
       auth
         .checkToken(jwt)
         .then((data) => {
-          console.log(data);
-          setUserEmail(data.email);
           setLoggedIn(true);
         })
         .catch((err) => console.log(`Ошибка - ${err}`));
@@ -106,9 +100,10 @@ function App() {
     if (loggedIn) {
       api
         .getUserProfile()
-        .then((data) => {
-          setCurrentUser(data);
-        })
+        .then((userData) => {
+          console.log(userData);
+          setCurrentUser(userData);
+       })
         .catch((err) => {
           console.log(`Ошибка - ${err}`);
         });
@@ -211,6 +206,7 @@ function App() {
       .catch((err) => console.log(`Ошибка - ${err}`));
   };
 
+  console.log(currentUser);
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div>

@@ -13,6 +13,9 @@ function Main({
   onCardLike,
 }) {
   const currentUser = useContext(CurrentUserContext);
+  console.log(currentUser);
+  console.log(currentUser.data)
+  console.log(currentUser.data.name)
 
   return (
     <main className="content">

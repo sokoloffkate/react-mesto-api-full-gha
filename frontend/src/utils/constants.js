@@ -87,5 +87,6 @@ export const settingConfig = {
   url: "https://api.mesto.sokolova.nomoredomains.monster",
   headers: {
       "Content-Type": "application/json",
-  },
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+  }
 };

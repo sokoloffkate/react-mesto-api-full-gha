@@ -5,8 +5,7 @@ class Api {
     this._url = settings.url;
     this._headers = settings.headers;
   }
-
-  _checkResponse(res) {
+   _checkResponse(res) {
     if (res.ok) {
       return res.json();
     } else {
