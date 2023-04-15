@@ -234,7 +234,7 @@ function App() {
             <Login isLoggedIn={loggedIn} onLogin={handleAuthenticate} />
           </Route>
           
-          <Route path="/sign-up">
+          <Route path="/signup">
             <Register isLoggedIn={loggedIn} onRegister={handleRegister} />
           </Route>
 
