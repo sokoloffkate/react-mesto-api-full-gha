@@ -31,6 +31,7 @@ function App() {
   const [deleteCard, setDeleteCard] = useState({ isOpen: false, card: {} });
   const [selectedCard, setSelectedCard] = useState({ isOpen: false, card: {} });
   const [currentUser, setCurrentUser] = useState({});
+  console.log(currentUser);
   const [cards, setCards] = useState([]);
 
   const handleInfoPopupClick = () => {
@@ -44,6 +45,7 @@ function App() {
         .then((data) => {
           setLoggedIn(true);
           setUserEmail(email);
+          console.log(userEmail);
           localStorage.setItem("jwt", data.token)
         })
         .catch((err) => {
@@ -101,8 +103,10 @@ function App() {
       api
         .getUserProfile()
         .then((userData) => {
-          console.log(userData);
           setCurrentUser(userData);
+          console.log(userData);
+          console.log(currentUser);
+          
        })
         .catch((err) => {
           console.log(`Ошибка - ${err}`);
@@ -206,12 +210,12 @@ function App() {
       .catch((err) => console.log(`Ошибка - ${err}`));
   };
 
-  console.log(currentUser);
   return (
+    
     <CurrentUserContext.Provider value={currentUser}>
-      <div>
+  <div>
         <Header email={userEmail} onLogOut={handleLogOut} />
-        <Switch>
+         <Switch>
           <ProtectedRoute
             exact
             path="/"
@@ -224,12 +228,13 @@ function App() {
             onDeleteCard={handleDeleteClick}
             onCardClick={handleCardClick}
             onCardLike={handleCardLike}
-          />
+            />
+                      
           <Route path="/signin">
             <Login isLoggedIn={loggedIn} onLogin={handleAuthenticate} />
           </Route>
-
-          <Route path="/signup">
+          
+          <Route path="/sign-up">
             <Register isLoggedIn={loggedIn} onRegister={handleRegister} />
           </Route>
 
@@ -284,7 +289,7 @@ function App() {
         onClose={closeAllPopups}
       />
     </CurrentUserContext.Provider>
-  );
+ );
 }
 
 export default App;
