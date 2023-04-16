@@ -31,7 +31,6 @@ function App() {
   const [deleteCard, setDeleteCard] = useState({ isOpen: false, card: {} });
   const [selectedCard, setSelectedCard] = useState({ isOpen: false, card: {} });
   const [currentUser, setCurrentUser] = useState({});
-  console.log(currentUser);
   const [cards, setCards] = useState([]);
 
   const handleInfoPopupClick = () => {
@@ -45,9 +44,8 @@ function App() {
         .then((data) => {
           setLoggedIn(true);
           setUserEmail(email);
-          console.log(userEmail);
           localStorage.setItem("jwt", data.token)
-        })
+           })
         .catch((err) => {
           setUserRegister(false);
           handleInfoPopupClick();
@@ -103,11 +101,8 @@ function App() {
       api
         .getUserProfile()
         .then((userData) => {
-          setCurrentUser(userData);
-          console.log(userData);
-          console.log(currentUser);
-          
-       })
+          setCurrentUser(userData.data);
+        })
         .catch((err) => {
           console.log(`Ошибка - ${err}`);
         });
@@ -119,7 +114,7 @@ function App() {
       api
         .getCards()
         .then((cards) => {
-          setCards(cards);
+          setCards(cards.data);
         })
         .catch((err) => {
           console.log(`Ошибка - ${err}`);
@@ -241,6 +236,7 @@ function App() {
           <Route>
             {loggedIn} ? <Redirect to="/" /> : <Redirect to="/signin" />
           </Route>
+          
         </Switch>
         <Footer />
       </div>

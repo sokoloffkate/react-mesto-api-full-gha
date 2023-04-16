@@ -5,7 +5,15 @@ class Api {
     this._url = settings.url;
     this._headers = settings.headers;
   }
-   _checkResponse(res) {
+
+  _getHeaders() {
+    return { 
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem('jwt')}` 
+    }
+  }
+
+  _checkResponse(res) {
     if (res.ok) {
       return res.json();
     } else {
@@ -16,21 +24,21 @@ class Api {
   getCards() {
     return fetch(`${this._url}/cards`, {
       method: "GET",
-      headers: this._headers,
-    }).then(this._checkResponse);
+      headers: this._getHeaders(),
+       }).then(this._checkResponse);
   }
 
   getUserProfile() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: this._getHeaders(),
     }).then(this._checkResponse);
   }
 
   addNewCard({ name, link }) {
     return fetch(`${this._url}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: this._getHeaders(),
       body: JSON.stringify({
         name: name,
         link: link,
@@ -41,14 +49,14 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: this._getHeaders(),
   }).then(this._checkResponse);
   }
 
   updateUserProfile({ name, job }) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: this._getHeaders(),
       body: JSON.stringify({
         name: name,
         about: job,
@@ -59,14 +67,14 @@ class Api {
   switchCardLikes(idCard, likeStatus) {
     return fetch(`${this._url}/cards/${idCard}/likes`, {
       method: likeStatus ? "DELETE" : "PUT",
-      headers: this._headers,
+      headers: this._getHeaders(),
     }).then(this._checkResponse);
   }
 
   changeAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: this._getHeaders(),
       body: JSON.stringify({
         avatar: data.avatar,
       }),

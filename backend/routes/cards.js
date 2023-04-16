@@ -13,6 +13,7 @@ CardRouter.post('/', celebrate({
     link: Joi.string().required().pattern(RegUrl),
   }),
 }), createCard);
+
 CardRouter.delete('/:id', celebrate({
   params: Joi.object().keys({
     id: Joi.string().length(24),

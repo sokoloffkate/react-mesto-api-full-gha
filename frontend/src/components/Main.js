@@ -13,22 +13,20 @@ function Main({
   onCardLike,
 }) {
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser);
-  console.log(currentUser.data)
-  console.log(currentUser.data.name)
-
+  const { name, about, avatar } = currentUser;
+      
   return (
     <main className="content">
       <section className="profile">
         <img
-          src={currentUser.avatar}
+          src={avatar}
           className="profile__avatar"
           alt="Кусто"
           onClick={onEditAvatar}
         />
         <div className="profile__info">
-          <h1 className="profile__title">{currentUser.name}</h1>
-          <p className="profile__subtitle">{currentUser.about}</p>
+          <h1 className="profile__title">{name}</h1>
+          <p className="profile__subtitle">{about}</p>
           <button
             type="button"
             className="profile__edit-button"

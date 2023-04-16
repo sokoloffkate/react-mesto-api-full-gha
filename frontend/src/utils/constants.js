@@ -83,10 +83,12 @@ export const stateCreateBtnConfig = {
   activeState: "Создание...",
 };
 
+export const token_jwt = localStorage.jwt;
+
 export const settingConfig = {
   url: "https://api.mesto.sokolova.nomoredomains.monster",
-  headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${localStorage.getItem('jwt')}`,
-  }
+  //headers: {
+     // "Content-Type": "application/json",
+     // authorization: `Bearer ${localStorage.jwt}`,
+ // }
 };
