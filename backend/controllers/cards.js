@@ -15,7 +15,7 @@ module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
   const ownerId = req.user._id;
   Card.create({ name, link, owner: ownerId })
-    .then((card) => res.status(OK).send({ data: card }))
+    .then((card) => res.status(201).send({ data: card }))
     .catch((err) => next(err));
 };
 
@@ -25,8 +25,9 @@ module.exports.deleteCard = (req, res, next) => {
     .orFail(new NotFound(`Карточка с указанным id = ${req.params.id} не найдена`))
     .then((card) => {
       if (String(card.owner._id) === ownerId) {
-        card.delete();
-        res.status(OK).send({ message: `'Карточка с id = ${req.params.id} успешно удалена'` });
+        card.delete()
+        .then(() =>
+        res.status(OK).send({ message: `'Карточка с id = ${req.params.id} успешно удалена'` }));
       } else {
         throw (new Forbidden('Карточка принаджежит другому пользователю. Удаление невозможно'));
       }
@@ -37,6 +38,7 @@ module.exports.deleteCard = (req, res, next) => {
 module.exports.likeCard = (req, res, next) => Card.findByIdAndUpdate(
   req.params.id,
   { $addToSet: { likes: req.user._id } },
+  { new: true },
 )
   .orFail(new NotFound(`Карточка с указанным id = ${req.params.id} не найдена`))
   .populate(['likes', 'owner'])
@@ -46,6 +48,7 @@ module.exports.likeCard = (req, res, next) => Card.findByIdAndUpdate(
 module.exports.dislikeCard = (req, res, next) => Card.findByIdAndUpdate(
   req.params.id,
   { $pull: { likes: req.user._id } },
+  { new: true },
 )
   .orFail(new NotFound(`Карточка с указанным id = ${req.params.id} не найдена`))
   .then((card) => res.status(OK).send({ data: card }))

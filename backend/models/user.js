@@ -23,8 +23,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
     validate: {
-      // eslint-disable-next-line no-useless-escape
-      validator: (v) => /^(https?:\/\/)?(w{3}\.)?([a-zA-Z0-9-._~:/?#[\]\@!\$\&'()*\+,;=]{1,})*#?/gm.test(v),
+      validator: (v) => /^(https?:\/\/)?(w{3}\.)?([a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]{1,})*#?/gm.test(v),
       message: (props) => `${props.value} is not a valid link!`,
     },
   },

@@ -10,8 +10,7 @@ const BAD_REQUEST_MESSAGE = 'Переданы некорректные данн�
 const INTERNAL_SERVER_ERROR_MESSAGE = 'Ошибка сервера';
 const NOT_FOUND_MESSAGE = 'Запрашиваемый ресурс не найден';
 
-// eslint-disable-next-line no-useless-escape
-const RegUrl = /^https?:\/\/([\w]*[^\w])+#?/;
+const REGEXP_URL = /^https?:\/\/([\w]*[^\w])+#?/;
 
 const { JWT_SECRET = 'some-secret-key' } = process.env;
 
@@ -26,6 +25,6 @@ module.exports = {
   BAD_REQUEST_MESSAGE,
   INTERNAL_SERVER_ERROR_MESSAGE,
   NOT_FOUND_MESSAGE,
-  RegUrl,
+  REGEXP_URL,
   JWT_SECRET,
 };

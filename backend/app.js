@@ -9,7 +9,7 @@ const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/ErrorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { RegUrl } = require('./utils/constants');
+const { REGEXP_URL } = require('./utils/constants');
 const NotFound = require('./errors/NotFound');
 
 const { PORT = 3000 } = process.env;
@@ -48,10 +48,10 @@ app.post('/signup', celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().pattern(RegUrl),
+    avatar: Joi.string().pattern(REGEXP_URL),
     email: Joi.string().required().email(),
     password: Joi.string().required(),
-  }).unknown(true),
+  }),
 }), createUser);
 
 app.use(auth);
